@@ -44,20 +44,25 @@ def URLtoImageArray(zillowURL):
 	return imageArray
 
 if __name__ == "__main__":
-	zipcode = randomZipcode()
-	listings = listingsFromZipcode(str(zipcode))
+	while True:
+		zipcode = randomZipcode()
+		listings = listingsFromZipcode(str(zipcode))
 
-	# Edge case where there is only 1 listing, the random function yields an error (rand(0,0))
-	if len(listings) == 1:
-		randomIndex = 0
-	else:
-		randomIndex = np.random.randint(0, len(listings)-1)
-	zpid = listings['id'][randomIndex]
-	address = listings['address'][randomIndex]
-	beds = listings['beds'][randomIndex]
-	baths = listings['baths'][randomIndex]
-	area = listings['area'][randomIndex]
-	price = listings['price'][randomIndex]
+		# Edge case where there is only 1 listing, the random function yields an error (rand(0,0))
+		if len(listings) == 1:
+			randomIndex = 0
+		else:
+			randomIndex = np.random.randint(0, len(listings)-1)
+		zpid = listings['id'][randomIndex]
+		address = listings['address'][randomIndex]
+		beds = listings['beds'][randomIndex]
+		baths = listings['baths'][randomIndex]
+		area = listings['area'][randomIndex]
+		price = listings['price'][randomIndex]
+
+		# Go through while loop again when beds is NoneType object (non-house listing)
+		if beds is not None:
+			break
 
 	print("\n", zpid, "\n", address,"\n", beds, "\n", baths, "\n", area, "\n", price, "\n")
 	zillowURL = "https://www.zillow.com/homedetails/"+zpid+"_zpid/"

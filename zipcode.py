@@ -56,8 +56,13 @@ def listingsFromZipcode(zipcode):
 
     data_list = [data1]
                 # ,data11,data12,data13,data14,data15,data16,data17,data18,data19,data20]
-    if len(data1['cat1']['searchResults']['listResults']) == 0:
+    try:
+        if len(data1['cat1']['searchResults']['listResults']) == 0:
+            return listingsFromZipcode(str(randomZipcode()))
+    except:
         return listingsFromZipcode(str(randomZipcode()))
+    # if len(data1['cat1']['searchResults']['listResults']) == 0:
+    #     return listingsFromZipcode(str(randomZipcode()))
     df = pd.DataFrame()
 
     def make_frame(frame):
@@ -67,7 +72,6 @@ def listingsFromZipcode(zipcode):
         return frame
 
     df = make_frame(df)
-        
     #drop cols
     # df = df.drop('hdpData', 1) #remove this line to see a whole bunch of other random cols, in dict format
 
