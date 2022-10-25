@@ -74,6 +74,6 @@ def listingsFromZipcode(zipcode):
     #drop dupes
     df = df.drop_duplicates(subset='zpid', keep="last")
     #filters
-    return df[['id', 'address', 'price']]
+    return df[['id', 'address', 'beds', 'baths', 'area', 'price']]
     # print('shape:', df.shape)
     # print(df[['id','address','beds','baths','area','price','zestimate','best_deal','hdpData']].head(20))

@@ -14,6 +14,9 @@ import re
 	# TODO: Clean-up code + encapsulation
 	# TODO: Update read-me (so ugly)
     # TODO: FRONTEND!!
+	# TODO: Run both programs at one click
+	# TODO: Find another listing when correct
+	# TODO: Data analysis
 ####################################################################################
 
 hdr = {
@@ -31,11 +34,13 @@ def URLtoImageArray(zillowURL):
 	regex = r'https:\\[\w/\.\\-]+?\-p_d.jpg'
 	for m in re.finditer(regex, HTMLFromURL(zillowURL)):
 		imageArray.append(m.group(0))
-
+	
 	for i in range(len(imageArray)):
 		imageArray[i] = imageArray[i].replace("\\", "")
 	imageArray = set(imageArray)
 	imageArray = list(imageArray)
+	file = open("length.txt", "w")
+	file.write(str(len(imageArray)))
 	return imageArray
 
 if __name__ == "__main__":
@@ -49,8 +54,12 @@ if __name__ == "__main__":
 		randomIndex = np.random.randint(0, len(listings)-1)
 	zpid = listings['id'][randomIndex]
 	address = listings['address'][randomIndex]
+	beds = listings['beds'][randomIndex]
+	baths = listings['baths'][randomIndex]
+	area = listings['area'][randomIndex]
 	price = listings['price'][randomIndex]
-	print("\n", zpid, "\n", address,"\n", price)
+
+	print("\n", zpid, "\n", address,"\n", beds, "\n", baths, "\n", area, "\n", price, "\n")
 	zillowURL = "https://www.zillow.com/homedetails/"+zpid+"_zpid/"
 	imageArray = []
 	imageArray = URLtoImageArray(zillowURL)
@@ -61,8 +70,9 @@ if __name__ == "__main__":
 	for f in filelist:
 		os.remove(os.path.join(path, f))
 	# loop through imageArray and save the image URLs to the Image folder
-	for images in imageArray:
+	for index, images in enumerate(imageArray):
 		fname = images.split('/')[-1]
+		fname = str(index)+".jpg"
 		r = requests.get(images,headers=hdr,stream=True,timeout=5)
 		if r.status_code == 200:
 			with open(os.path.join(path,fname),'wb') as f:

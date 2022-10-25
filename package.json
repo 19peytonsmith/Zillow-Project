@@ -1,0 +1,8 @@
+{
+  "type": "module",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "jsdom": "^20.0.1",
+    "save-dev": "^0.0.1-security"
+  }
+}
