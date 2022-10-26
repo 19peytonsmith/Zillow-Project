@@ -21,8 +21,17 @@ body {
 	font-family: 'Lato', Calibri, Arial, sans-serif;
 	color: #fff;
 	background: gray;
-  vertical-align: middle;
+    vertical-align: middle;
 }
+.text{
+	font: Arial;
+	font-size: 15px;
+	color:black;
+	justify-content: center;
+	text-align:center;
+	padding-right: 450px;
+}
+
 .btn-1 {
 	border: 1px solid #fff;
 	color: #fff;
@@ -33,6 +42,7 @@ img {
   border-radius: 4px;
   padding: 5px;
   width: 800px;
+  height: 850px;
 }
 .btn {
 	font-family: inherit;
@@ -43,6 +53,7 @@ img {
 	padding: 25px 80px;
 	display: inline-block;
 	margin: 15px 30px;
+	width: 350px;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	font-weight: 700;
@@ -52,8 +63,28 @@ img {
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
 }
+.btn2 {
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	padding: 20px 20px;
+	display: inline-block;
+	margin: 15px 0px;
+	width: 172px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+	border-radius: 4px
+}
 
-.btn:after {
+.btn:after, .btn2:after {
 	content: '';
 	position: absolute;
 	z-index: -1;
@@ -63,7 +94,7 @@ img {
 }
 
 /* Pseudo elements for icons */
-.btn:before {
+.btn:before, .btn2:before {
 	font-family: 'icomoon';
 	font-style: normal;
 	font-weight: normal;
@@ -103,4 +134,13 @@ img {
 .btn-1e:active:after {
 	height: 400%;
 	opacity: 1;
+}
+input[type=text]{
+	width: 45%;
+	position: relative;
+	top:1px;
+	padding: 20px;
+	font-size:20px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
 }

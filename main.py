@@ -8,13 +8,9 @@ import os
 import re
 
 ####################################################################################
-    # TODO: Use a random url of the ones listing down below?
-    # TODO: Get rid of Lot/Land results
     # TODO: Scrap higher quality images from HTML (no more using *-p_d.jpg)
 	# TODO: Clean-up code + encapsulation
 	# TODO: Update read-me (so ugly)
-    # TODO: FRONTEND!!
-	# TODO: Run both programs at one click
 	# TODO: Find another listing when correct
 	# TODO: Data analysis
 ####################################################################################
@@ -39,47 +35,50 @@ def URLtoImageArray(zillowURL):
 		imageArray[i] = imageArray[i].replace("\\", "")
 	imageArray = set(imageArray)
 	imageArray = list(imageArray)
-	file = open("length.txt", "w")
+	file = open("data.txt", "w")
 	file.write(str(len(imageArray)))
 	return imageArray
 
-if __name__ == "__main__":
-	while True:
-		zipcode = randomZipcode()
-		listings = listingsFromZipcode(str(zipcode))
+# if __name__ == "__main__":
+while True:
+	zipcode = randomZipcode()
+	listings = listingsFromZipcode(str(zipcode))
 
-		# Edge case where there is only 1 listing, the random function yields an error (rand(0,0))
-		if len(listings) == 1:
-			randomIndex = 0
-		else:
-			randomIndex = np.random.randint(0, len(listings)-1)
-		zpid = listings['id'][randomIndex]
-		address = listings['address'][randomIndex]
-		beds = listings['beds'][randomIndex]
-		baths = listings['baths'][randomIndex]
-		area = listings['area'][randomIndex]
-		price = listings['price'][randomIndex]
+	# Edge case where there is only 1 listing, the random function yields an error (rand(0,0))
+	if len(listings) == 1:
+		randomIndex = 0
+	else:
+		randomIndex = np.random.randint(0, len(listings)-1)
+	zpid = listings['id'][randomIndex]
+	address = listings['address'][randomIndex]
+	beds = listings['beds'][randomIndex]
+	baths = listings['baths'][randomIndex]
+	area = listings['area'][randomIndex]
+	price = listings['price'][randomIndex]
 
-		# Go through while loop again when beds is NoneType object (non-house listing)
-		if beds is not None:
-			break
+	# Go through while loop again when beds is NoneType object (non-house listing)
+	if beds is not None:
+		break
 
-	print("\n", zpid, "\n", address,"\n", beds, "\n", baths, "\n", area, "\n", price, "\n")
-	zillowURL = "https://www.zillow.com/homedetails/"+zpid+"_zpid/"
-	imageArray = []
-	imageArray = URLtoImageArray(zillowURL)
-	currentDirectory = os.getcwd()
-	path = os.path.join(currentDirectory, 'Images')
-	# delete all images in Image folder prior to calling image URLs
-	filelist = [ f for f in os.listdir(path)]
-	for f in filelist:
-		os.remove(os.path.join(path, f))
-	# loop through imageArray and save the image URLs to the Image folder
-	for index, images in enumerate(imageArray):
-		fname = images.split('/')[-1]
-		fname = str(index)+".jpg"
-		r = requests.get(images,headers=hdr,stream=True,timeout=5)
-		if r.status_code == 200:
-			with open(os.path.join(path,fname),'wb') as f:
-				r.raw.decode_content = True
-				shutil.copyfileobj(r.raw,f)
+print("\n", zpid, "\n", address,"\n", beds, "\n", baths, "\n", price, "\n", area)
+zillowURL = "https://www.zillow.com/homedetails/"+zpid+"_zpid/"
+imageArray = []
+imageArray = URLtoImageArray(zillowURL)
+file = open("data.txt", "w")
+datastring = str(len(imageArray))+"\n"+str(address)+"\n"+str(beds)+"\n"+str(baths)+"\n"+str(price)+"\n"+str(area)
+file.write(datastring)
+currentDirectory = os.getcwd()
+path = os.path.join(currentDirectory, 'Images')
+# delete all images in Image folder prior to calling image URLs
+filelist = [ f for f in os.listdir(path)]
+for f in filelist:
+	os.remove(os.path.join(path, f))
+# loop through imageArray and save the image URLs to the Image folder
+for index, images in enumerate(imageArray):
+	fname = images.split('/')[-1]
+	fname = str(index)+".jpg"
+	r = requests.get(images,headers=hdr,stream=True,timeout=5)
+	if r.status_code == 200:
+		with open(os.path.join(path,fname),'wb') as f:
+			r.raw.decode_content = True
+			shutil.copyfileobj(r.raw,f)
