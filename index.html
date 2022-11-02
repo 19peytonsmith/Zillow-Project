@@ -2,17 +2,40 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/button.css">
+    <link rel="stylesheet" href="/styles/slider.css">
     <script src="script.js" defer></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
   </head>
   <body>
-    <h1 id="address" class="address text"></h1>
-    <h1 id="beds" class="beds text"></h1>
-    <h1 id="baths" class="baths text"></h1>
-    <button id="decrement-button" class="btn btn-1 btn-1e">Previous</button>
-    <button id="increment-button" class="btn btn-1 btn-1e">Next</button>
-    <input type="text" placeholder="Your guess..." id="input">
-    <button id="submit-button" class="btn2 btn-1 btn-1e">Submit</button>
+    <div class="datacontainer">
+      <p id="address" style="text-align: center" class="address text"></p>
+      <div class="bedscontainer">
+        <p id="beds" style="text-align: center" class="beds text"></p>
+      </div>
+      <div class="bathscontainer">
+        <p id="baths" style="text-align: center" class="baths text"></p>
+      </div>
+      <div class="areacontainer">
+        <p id="area" style="text-align: center" class="area text"></p>
+      </div>
+    </div>
+    <div class = "imagecontainer" id="image">
+      <p id="price" class="price text" style="display: none"></p>
+    </div>
+    <div class = "buttoncontainer">
+      <button id="decrement-button" class="btn btn-1 btn-1e">Previous</button>
+      <button id="increment-button" class="btn btn-1 btn-1e">Next</button>
+    </div>
+    <div class="slidecontainer">
+      <input type="range" min="0" max="20000000" value="10000000" step="50000" class="slider" id="myRange">
+    </div>
+    <div class="valuecontainer">
+      <p style="font-size: 30px;">Guess: <span id="value"></span></p>
+    </div>
+    <div class="buttoncontainer">
+      <button id="submit-button" class="btn2 btn-1 btn-1e">Submit</button>
+    </div>
   </body>
 </html>

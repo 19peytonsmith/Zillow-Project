@@ -8,11 +8,11 @@ import os
 import re
 
 ####################################################################################
-    # TODO: Scrap higher quality images from HTML (no more using *-p_d.jpg)
 	# TODO: Clean-up code + encapsulation
 	# TODO: Update read-me (so ugly)
 	# TODO: Find another listing when correct
 	# TODO: Data analysis
+	# TODO: Front-end polishing
 ####################################################################################
 
 hdr = {
@@ -27,7 +27,7 @@ def HTMLFromURL(url):
 
 def URLtoImageArray(zillowURL):
 	imageArray = []
-	regex = r'https:\\[\w/\.\\-]+?\-p_d.jpg'
+	regex = r'https:\\[\w/\.\\-]+?1008.jpg'
 	for m in re.finditer(regex, HTMLFromURL(zillowURL)):
 		imageArray.append(m.group(0))
 	
@@ -57,9 +57,8 @@ while True:
 	price = listings['price'][randomIndex]
 
 	# Go through while loop again when beds is NoneType object (non-house listing)
-	if beds is not None:
+	if(beds is not None):
 		break
-
 print("\n", zpid, "\n", address,"\n", beds, "\n", baths, "\n", price, "\n", area)
 zillowURL = "https://www.zillow.com/homedetails/"+zpid+"_zpid/"
 imageArray = []

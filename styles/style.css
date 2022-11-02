@@ -1,0 +1,72 @@
+html{
+    margin: auto;
+}
+body {
+    background-image: url("/assets/bg.jpg");
+    border: 5px solid white;
+    width: 1500px;
+	font-family: 'Lato';
+    margin-left: auto;
+    margin-right: auto;
+	color: #fff;
+}
+.text{
+    text-transform: uppercase;
+	font-size: 20px;
+}
+.datacontainer {
+    height: auto;
+    width: max-content;
+	margin-right: auto;
+    margin-left: auto;
+}
+.slidecontainer {
+    margin-top: 20px;
+	margin-right: auto;
+    margin-left: auto;
+    width: 1344px;
+}
+.imagecontainer{
+    margin: auto;
+    overflow: hidden;
+    width: max-content;
+    height: 1028px;
+}
+.valuecontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	margin-right: auto;
+    margin-left: auto;
+    width: 1344px;
+}
+
+.buttoncontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    border: 10px solid #ddd;
+    border-radius: 10px;
+}
+
+.bedscontainer{
+    float:left;
+    width: 25%;
+}
+.bathscontainer{
+    float:left;
+    width: 50%;
+
+}
+.areacontainer{
+    float:right;
+    width: 25%;
+}
+
+.price{
+    font-size: 100px;
+    
+}

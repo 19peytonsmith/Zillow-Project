@@ -1,0 +1,49 @@
+/*.slider::after{
+	content: '$20,000,000';
+	color: black;
+	font-size: 15pt;
+	position: relative;
+	left: 50%;
+	top: 100%;
+}
+.slider::before{
+	content: '$0';
+	color: black;
+	font-size: 15pt;
+	position: relative;
+	right: 0%;
+	top: 100%;
+}
+*/
+.slider {
+	-webkit-appearance: none;
+	width: 100%;
+	height: 20px;
+	border-radius: 12px;  
+	background: linear-gradient(90deg, yellow 50%, gray 50%);
+	outline: none;
+	opacity: 0.7;
+	-webkit-transition: .2s;
+	transition: opacity .2s;
+	box-shadow: 0px 1px 10px 1px black;
+}
+
+.slider:hover{
+	opacity: 1;
+}
+.slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%; 
+	background: darkslategrey;
+	cursor: pointer;
+}
+.slider::-moz-range-thumb{
+	width: 40px;
+	height: 40px;
+	border-radius: 50%; 
+	background: darkslategrey;
+	cursor: pointer;
+}

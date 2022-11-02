@@ -20,11 +20,13 @@ function main(){
   // data[5] = area
   ///////////////////////////////
   var headingDiv1 = document.getElementById("address");
-  headingDiv1.innerHTML = "<H1>Address: "+data[1]+"</H1>"
+  headingDiv1.innerHTML = "<H2>Address: "+data[1]+"</H2>"
   var headingDiv2 = document.getElementById("beds");
-  headingDiv2.innerHTML = "<H2># of beds: "+data[2]+"</H2>"
+  headingDiv2.innerHTML = "<H3># of beds: "+data[2]+"</H3>"
   var headingDiv3 = document.getElementById("baths");
   headingDiv3.innerHTML = "<H3># of baths: "+data[3]+"</H3>"
+  var headingDiv4 = document.getElementById("area");
+  headingDiv4.innerHTML = "<H3>Area: "+data[5]+"</H3>"
   var imageArray = []
   for (let i = 0; i < data[0]; i++) {
     let img = document.createElement('img');
@@ -33,9 +35,7 @@ function main(){
     imageArray.push(source)
     img.setAttribute('src', source);
     img.setAttribute('id', i);
-    document.body.appendChild(img);
-    const target = document.querySelector('#decrement-button')
-    target.parentNode.insertBefore(img, target)
+    document.getElementById("image").appendChild(img);
   }
   
   // let btn = document.createElement('button');
@@ -75,28 +75,55 @@ function main(){
   });
 
   document.getElementById("submit-button").addEventListener("click", event => {
-    var input = document.getElementById("input").value;
+    var input = document.getElementById("myRange").value;
+    console.log(input)
     if(Math.abs(input.trim() - data[4].trim()) <= 0.2*data[4].trim())
     {
       console.log("CORRECT!!!!!")
+      // let img = document.getElementById(currentSourceDisplayed)
+      // img.setAttribute('src', 'assets/good.jpg');
       let img = document.getElementById(currentSourceDisplayed)
-      img.setAttribute('src', 'assets/good.jpg');
-
-      var source = 'Images/'+currentSourceDisplayed+'.jpg';
-      setTimeout(() => { img.setAttribute('src', source) }, 2000);
+      img.style.display = 'none';
+      let price = document.getElementById("price");
+      price.innerText = "Actual Price: " + data[4];
+      price.style.display = 'block'
+      // var source = 'Images/'+currentSourceDisplayed+'.jpg';
+      document.body.style.backgroundImage="url(/assets/good.jpg)"
+      setTimeout(() => { 
+        document.body.style.backgroundImage="url(/assets/bg.jpg)";
+    }, 2000000);
     //   $.ajax({
     //     type: "GET",
     //     url: "/main.py",
     //     success: main
     // });
 
+
     }else{
       console.log("INCORRECT!!!!!")
-      let img = document.getElementById(currentSourceDisplayed)
-      img.setAttribute('src', 'assets/bad.jpg');
+      // let img = document.getElementById(currentSourceDisplayed)
+      // img.setAttribute('src', 'assets/bad.jpg');
 
-      var source = 'Images/'+currentSourceDisplayed+'.jpg';
-      setTimeout(() => { img.setAttribute('src', source) }, 2000);
+      // var source = 'Images/'+currentSourceDisplayed+'.jpg';
+      document.body.style.backgroundImage="url(/assets/bad.jpg)"
+      setTimeout(() => { document.body.style.backgroundImage="url(/assets/bg.jpg)" }, 2000);
     }
   });
+
+  var slider = document.getElementById("myRange");
+  var output = document.getElementById("value");
+
+  output.innerHTML = "$" + Number(slider.value).toLocaleString('en-US');
+
+  slider.oninput = function(){
+    output.innerHTML = "$" + Number(this.value).toLocaleString('en-US');
+  }
+
+  slider.addEventListener("mousemove", function(){
+    var maxValue = document.getElementById("myRange").getAttribute("max")
+    var x = 100*slider.value/maxValue;
+    console.log(x)
+    var color = 'linear-gradient(90deg, yellow ' + x + '%, gray ' + x + '%)';
+    slider.style.background = color;
+  })
 }
