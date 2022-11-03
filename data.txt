@@ -1,6 +1,31 @@
-21
-18 Church St, Startex, SC 29377
-2
+17
+3517
+17 Old State Rd, Millerton, PA 16936
+3
+1.0
+$425,000
+182014
+35
+2271 Cross Creek Trl, Cuyahoga Falls, OH 44223
+5
+6.0
+$1,300,000
+867569
+14
+5128 Watson Rd, Wesson, MS 39191
+3
 2.0
-$145,000
-954
+$185,000
+180083
+69
+50001 Jersey Rd, Pollock, MO 63560
+5
+4.0
+$1,978,000
+4600
+83
+W5590 Chicago Ave, Wautoma, WI 54982
+5
+7.0
+$2,900,000
+6903
