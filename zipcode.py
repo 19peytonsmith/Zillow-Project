@@ -42,8 +42,11 @@ def listingsFromZipcode(zipcode):
         # r8 = s.get(url8, headers=req_headers)
         # r9 = s.get(url9, headers=req_headers)
         # r10 = s.get(url10, headers=req_headers)
-
-        data1 = json.loads(re.search(r'!--(\{"queryState".*?)-->', r1.text).group(1))
+        param = re.search(r'!--(\{"queryState".*?)-->', r1.text)
+        if param is None:
+            return None
+        else: 
+            data1 = json.loads(param.group(1))
         # data2 = json.loads(re.search(r'!--(\{"queryState".*?)-->', r2.text).group(1))
         # data3 = json.loads(re.search(r'!--(\{"queryState".*?)-->', r3.text).group(1))
         # data4 = json.loads(re.search(r'!--(\{"queryState".*?)-->', r4.text).group(1))
