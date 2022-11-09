@@ -3,7 +3,7 @@ html{
 }
 body {
     background-image: url("assets/bg.jpg");
-    background-size:auto;
+    background-size:cover;
     border: 5px solid white;
     width: 1500px;
 	font-family: 'Lato';
