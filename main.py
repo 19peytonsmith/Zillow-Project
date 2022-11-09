@@ -12,6 +12,7 @@ app = Flask(__name__, template_folder='./')
 
 ####################################################################################
 	# TODO: Clean-up code + encapsulation
+	# TODO: Eliminate need of data.txt and transmit data via Flask
 	# TODO: Update read-me (so ugly)
 	# TODO: Data analysis
 	# TODO: Front-end polishing
@@ -41,14 +42,14 @@ def URLtoImageArray(zillowURL):
 
 @app.route("/")
 def start():
-	main()
-	return render_template("index.html")
+	return main()
 
 # Clear data.txt
 @app.route("/finished", methods=['POST', "GET"])
 def main():
 	open('static/files/data.txt', 'w').close()
-	app.logger.info('hello')
+	app.logger.info('Hello! From Python')
+	dictionaryImages={}
 	for i in range(5):
 		while True:
 			# Edge case where listingsFromZipcode yields a NoneType object
@@ -76,24 +77,11 @@ def main():
 		zillowURL = "https://www.zillow.com/homedetails/"+zpid+"_zpid/"
 		imageArray = []
 		imageArray = URLtoImageArray(zillowURL)
+		key = 'set'+str(i)
+		dictionaryImages[key]=imageArray
 		file = open("static/files/data.txt", "a")
 		datastring = str(len(imageArray))+"\n"+str(address)+"\n"+str(beds)+"\n"+str(baths)+"\n"+str(price)+"\n"+str(area)+"\n"
 		file.write(datastring)
-		currentDirectory = os.getcwd()
-		path = os.path.join(currentDirectory, 'static/files/Images/set'+str(i))
-		# delete all images in Image folder prior to calling image URLs
-		filelist = [ f for f in os.listdir(path)]
-		for f in filelist:
-			os.remove(os.path.join(path, f))
-		# loop through imageArray and save the image URLs to the Image folder
-		for index, images in enumerate(imageArray):
-			fname = images.split('/')[-1]
-			fname = str(index)+".jpg"
-			r = requests.get(images,headers=hdr,stream=True,timeout=5)
-			if r.status_code == 200:
-				with open(os.path.join(path,fname),'wb') as f:
-					r.raw.decode_content = True
-					shutil.copyfileobj(r.raw,f)
-	return render_template("index.html")
+	return render_template("index.html", dictionaryImages = dictionaryImages)
 if __name__ == "__main__":
 	app.run(debug = True)

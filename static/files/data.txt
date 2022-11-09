@@ -1,78 +1,30 @@
-37
-1613 E 34th Ave, Spokane, WA 99203
-5
-4.0
-$529,900
-2792
-28
-113 Cedar Ct, Chowchilla, CA 93610
-5
-3.0
-$405,000
-2239
-29
-Overton Plan, The Preserve at Parkside
-4
-3.0
-$600,000+
-3251
-43
-2735 Underwood Ave, Ainsworth, IA 52201
-4
+35
+4312 Marquette Dr, Fort Wayne, IN 46806
+3
 2.0
-$232,500
-1956
-32
-709 S 4th St, Ironton, OH 45638
+$162,000
+2113
+25
+104162 S 4774th Rd, Muldrow, OK 74948
+3
+1.0
+$299,000
+1070
+35
+13012 N Morgan Rd, Yukon, OK 73099
 5
-4.0
+5.0
+$824,900
+6286
+20
+1202 S Elm St, Brady, TX 76825
+3
+2.0
 $239,000
-4420
-16
-118 Lazy Ln, Baytown, TX 77520
-3
-2.0
-$259,900
-1799
+2234
 37
-12560 S Fm 1915, Buckholts, TX 76518
+2412 Water Division Rd, Green Bay, WI 54311
 4
-2.0
-$849,000
-1915
-53
-6474 Taylor Landing Rd, Girdletree, MD 21829
-3
-2.0
-$1,050,000
-2219
-69
-27 Chimney Dr, Tiger, GA 30576
-4
-2.0
-$399,000
-1568
-29
-210 N Sunset Dr, Pleasantville, IA 50225
-3
-2.0
-$241,000
-1490
-48
-4425 Clares St SPACE 58, Capitola, CA 95010
-3
-2.0
-$510,000
-1300
-37
-2950 Y Rd, Hill City, KS 67642
-3
-2.0
-$349,000
-1810
-49
-942 Bobcat Dr, Ahsahka, ID 83520
-2
-2.0
-$997,500
-1555
+1.0
+$224,900
+1988

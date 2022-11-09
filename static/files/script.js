@@ -37,15 +37,13 @@ function main(){
     headingDiv3.innerHTML = "<H3># of baths: "+data[6*setNumber+3]+"</H3>"
     var headingDiv4 = document.getElementById("area");
     headingDiv4.innerHTML = "<H3>Area: "+data[6*setNumber+5]+"</H3>"
-    var imageArray = []
+    key = 'set'+setNumber;
     for (let i = 0; i < data[6*setNumber]; i++) {
       let img = document.createElement('img');
       img.style.display = "none";
-      var source = 'static/files/Images/set'+setNumber+'/'+i+'.jpg';
-      imageArray.push(source)
+      var source = dictionaryImages[key][i];
       img.setAttribute('src', source);
       img.setAttribute('id', i);
-      //document.getElementById("image").appendChild(img);
       document.getElementById("image").insertBefore(img, document.getElementById('data'))
     }
   }
