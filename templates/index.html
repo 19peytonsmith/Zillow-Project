@@ -2,13 +2,16 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="{{ url_for('static', filename='files/style.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='files/button.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='files/slider.css')}}">
-    <script src="{{ url_for('static', filename='files/script.js') }}" defer></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/button.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slider.css')}}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script>var dictionaryImages = JSON.parse('{{ dictionaryImages | tojson | safe}}');</script>
+    <script>
+      var dictionaryImages = JSON.parse('{{ dictionaryImages | tojson | safe}}');
+      var dictionaryListingInfo = JSON.parse('{{ dictionaryListingInfo | tojson | safe}}');
+    </script>
   </head>
   <body>
     <div class="datacontainer">

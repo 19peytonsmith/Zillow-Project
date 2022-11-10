@@ -2,7 +2,7 @@ html{
     margin: auto;
 }
 body {
-    background-image: url("assets/bg.jpg");
+    background-image: url("../assets/bg.jpg");
     background-size:cover;
     border: 5px solid white;
     width: 1500px;

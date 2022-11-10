@@ -8,11 +8,10 @@ import shutil
 import os
 import re
 import sys
-app = Flask(__name__, template_folder='./')
+app = Flask(__name__, template_folder="../templates", static_folder="../static")
 
 ####################################################################################
 	# TODO: Clean-up code + encapsulation
-	# TODO: Eliminate need of data.txt and transmit data via Flask
 	# TODO: Update read-me (so ugly)
 	# TODO: Data analysis
 	# TODO: Front-end polishing
@@ -47,9 +46,9 @@ def start():
 # Clear data.txt
 @app.route("/finished", methods=['POST', "GET"])
 def main():
-	open('static/files/data.txt', 'w').close()
 	app.logger.info('Hello! From Python')
 	dictionaryImages={}
+	dictionaryListingInfo={}
 	for i in range(5):
 		while True:
 			# Edge case where listingsFromZipcode yields a NoneType object
@@ -63,12 +62,18 @@ def main():
 				randomIndex = 0
 			else:
 				randomIndex = np.random.randint(0, len(listings)-1)
+			key = 'set'+str(i)
 			zpid = listings['id'][randomIndex]
 			address = listings['address'][randomIndex]
 			beds = listings['beds'][randomIndex]
 			baths = listings['baths'][randomIndex]
 			area = listings['area'][randomIndex]
 			price = listings['price'][randomIndex]
+			dictionaryListingInfo[str((key,'address'))] = str(address)
+			dictionaryListingInfo[str((key,'beds'))] = str(beds)
+			dictionaryListingInfo[str((key,'baths'))] = str(baths)
+			dictionaryListingInfo[str((key,'area'))] = str(area)
+			dictionaryListingInfo[str((key,'price'))] = str(price)
 
 			# Go through while loop again when beds is NoneType object (non-house listing)
 			if(beds is not None):
@@ -77,11 +82,9 @@ def main():
 		zillowURL = "https://www.zillow.com/homedetails/"+zpid+"_zpid/"
 		imageArray = []
 		imageArray = URLtoImageArray(zillowURL)
-		key = 'set'+str(i)
 		dictionaryImages[key]=imageArray
-		file = open("static/files/data.txt", "a")
-		datastring = str(len(imageArray))+"\n"+str(address)+"\n"+str(beds)+"\n"+str(baths)+"\n"+str(price)+"\n"+str(area)+"\n"
-		file.write(datastring)
-	return render_template("index.html", dictionaryImages = dictionaryImages)
+	return render_template("index.html", 
+	dictionaryImages = dictionaryImages, 
+	dictionaryListingInfo = dictionaryListingInfo)
 if __name__ == "__main__":
 	app.run(debug = True)
