@@ -137,7 +137,7 @@ function calculateResult(newScore, img){
   if(newScore > 800){
     img.setAttribute('src', 'static/assets/good.jpg');
   }else if(newScore <= 800 && newScore >= 300){
-    img.setAttribute('src', 'static/assets/bad.jpg');
+    img.setAttribute('src', 'static/assets/neutral.jpg');
   }else{
     img.setAttribute('src', 'static/assets/angry.gif');
   }
