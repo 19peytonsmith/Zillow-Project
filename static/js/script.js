@@ -94,7 +94,18 @@ document.getElementById("submit-button").addEventListener("click", event => {
   var slider = document.getElementById("myRange");
   slider.setAttribute("value", 0);
   slider.setAttribute("max", 100)
+  let div = document.getElementById("bottom");
+  let children = div.children;
+  for (let i = 0; i < children.length; i++) {
+      children[i].style.display = "none";
+  }
   setTimeout(() => {
+    for (let i = 0; i < children.length; i++) {
+      children[i].style.display = "flex";
+      children[i].style.alignItems = "center"
+      children[i].style.justifyContent = "center"
+
+    }
     price.style.display = 'none';
     newScore1.style.display = 'none';
     totalScore1.style.display = 'none';
