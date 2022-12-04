@@ -8,7 +8,7 @@ import pandas as pd
 from time import *
 from faker import Faker
 fake = Faker()
-app = Flask(__name__, template_folder="../templates", static_folder="../static")
+app = Flask(__name__, template_folder="./templates", static_folder="./static")
 
 ####################################################################################
 	# TODO: Clean-up code + encapsulation
