@@ -71,7 +71,7 @@ def start():
 
 @app.route("/finished", methods=['POST', "GET"])
 def main():
-	app.logger.info('Hello! From Python')
+	app.logger.info('Hello From Python!')
 	dictionaryImages={}
 	dictionaryListingInfo={}
 	for i in range(5):
