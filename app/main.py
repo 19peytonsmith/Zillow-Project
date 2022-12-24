@@ -74,7 +74,7 @@ def main():
 	app.logger.info('Hello From Python!')
 	dictionaryImages={}
 	dictionaryListingInfo={}
-	for i in range(5):
+	for i in range(3):
 		while True:
 			# Edge case where listingsFromZipcode yields a NoneType object
 			while True:

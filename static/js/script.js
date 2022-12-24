@@ -111,7 +111,7 @@ document.getElementById("submit-button").addEventListener("click", event => {
     totalScore1.style.display = 'none';
     currentSourceDisplayed = 0;
     Info.setNumber += 1;
-    if(Info.setNumber < 5){
+    if(Info.setNumber < 3){
       rerender();
       document.getElementById(0).style.display = "block";
     }else{
