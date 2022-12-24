@@ -13,7 +13,6 @@ app = Flask(__name__, template_folder="../templates", static_folder="../static")
 ####################################################################################
 	# TODO: Clean-up code + encapsulation
 	# TODO: Update read-me (so ugly)
-	# TODO: Data analysis
 	# TODO: Front-end polishing
 ####################################################################################
 hdr = {
